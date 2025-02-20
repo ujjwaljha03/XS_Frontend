@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  overflow: hidden; /* Prevent global scrolling */
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Scrollbar styles */
+.scrollable-1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-1::-webkit-scrollbar-thumb {
+  background-color: #af02ff; /* Blue */
+}
+
+.scrollable-1::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #5038a0, #221b44); /* Gradient */
+}
+
+.scrollable-2::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-2::-webkit-scrollbar-thumb {
+  background-color: #750606; /* Red */
+}
+
+.scrollable-2::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #fb3200, #9f3115); /* Orange to black gradient */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  html, body {
+    font-size: 14px; /* Reduce font size for mobile */
+    overflow: auto; /* Allow scrolling on mobile */
+  }
+
+  body {
+    background: linear-gradient(to bottom, #000000, #141414); /* Adjust background */
+  }
+
+  .scrollable-1::-webkit-scrollbar,
+  .scrollable-2::-webkit-scrollbar {
+    width: 4px; /* Reduce scrollbar width for mobile */
+  }
+
+  .scrollable-1::-webkit-scrollbar-thumb {
+    background-color: #a300ff; /* Slightly lighter blue */
+  }
+
+  .scrollable-2::-webkit-scrollbar-thumb {
+    background-color: #a32222; /* Adjust red color */
+  }
+
+  .scrollable-1::-webkit-scrollbar-track,
+  .scrollable-2::-webkit-scrollbar-track {
+    background: none; /* Remove track gradient for a cleaner mobile look */
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+  html, body {
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  .scrollable-1::-webkit-scrollbar,
+  .scrollable-2::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on very small screens */
+  }
+}
