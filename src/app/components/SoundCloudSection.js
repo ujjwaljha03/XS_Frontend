@@ -41,12 +41,13 @@ const SoundCloudSection = ({ isLoggedIn, setIsLoggedIn, onSongSelect, currentSon
         toast.success("Login Successful!", { autoClose: 1000, position: "bottom-center" })
       }
     } catch (error) {
-      if (error.message.includes("Network Error")) {
-        toast.info("Server not Connected!",{autoClose: 1000, position: "bottom-center"})
-      } else {
-        console.error("Error fetching user ID:", error)
-        toast.error("Error checking login status", { autoClose: 1000, position: "bottom-center" })
-      }
+       if (error.response && error.response.status === 404) {
+         console.log("User not logged in yet");
+       } else if (error.code === "ERR_NETWORK") {
+         toast.error("Network Error: Please check your connection", { autoClose: 2000, position: "bottom-center" });
+       } else {
+         toast.error("Error checking login status", { autoClose: 1000, position: "bottom-center" });
+       }
     }
   }
 
