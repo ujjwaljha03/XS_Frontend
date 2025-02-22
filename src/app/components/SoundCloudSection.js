@@ -41,8 +41,8 @@ const SoundCloudSection = ({ isLoggedIn, setIsLoggedIn, onSongSelect, currentSon
         toast.success("Login Successful!", { autoClose: 1000, position: "bottom-center" })
       }
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        console.log("User not logged in yet")
+      if (error.message.includes("ERR_CONNECTION_REFUSED")) {
+        toast.info("Server not Connected!",{autoClose: 1000, position: "bottom-center"})
       } else {
         console.error("Error fetching user ID:", error)
         toast.error("Error checking login status", { autoClose: 1000, position: "bottom-center" })
