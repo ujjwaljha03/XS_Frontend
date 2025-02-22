@@ -47,7 +47,7 @@ const SpotifySection = ({ isLoggedIn, setIsLoggedIn, onSongSelect, currentSongPl
         toast.success('Login Successful!', { autoClose: 1000, position: 'bottom-center' })
       }
     } catch (error) {
-      if (error.message.includes("ERR_CONNECTION_REFUSED")) {
+      if (error.message.includes("Network Error")) {
         toast.info("Server not Connected!",{autoClose: 1000, position: "bottom-center"})
       }
       else {
