@@ -47,10 +47,10 @@ const SpotifySection = ({ isLoggedIn, setIsLoggedIn, onSongSelect, currentSongPl
         toast.success('Login Successful!', { autoClose: 1000, position: 'bottom-center' })
       }
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        // User is not logged in, this is expected for first visit
-        console.log("User not logged in yet")
-      } else {
+      if (error.message.includes("ERR_CONNECTION_REFUSED")) {
+        toast.info("Server not Connected!",{autoClose: 1000, position: "bottom-center"})
+      }
+      else {
         toast.error("Error checking login status", { autoClose: 1000, position: "bottom-center" })
       }
       // Don't call handleLogout here, as the user might not be logged in yet
